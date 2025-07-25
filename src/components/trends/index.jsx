@@ -7,6 +7,7 @@ import card_img from "../../assets/card_img1.png";
 // kerakli modullarni import qilamiz
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
 import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 
 function Ternds() {
   const data = [
@@ -49,8 +50,9 @@ function Ternds() {
       <div className="w-[90%] m-auto flex flex-col gap-[60px] mt-[40px]">
         <div className="flex items-center justify-between">
           <h3 className="text-[#FFF] text-[48px] font-bold">Trends</h3>
-          <Link className="text-[29px] font-medium text-blue-600" to={"/"}>
+          <Link className="text-[29px] font-medium text-[#1677ff] flex items-center gap-4" to={"/"}>
             See More
+            <ArrowRight size={24} color="#1677ff" />
           </Link>
         </div>
         <div>
