@@ -22,7 +22,7 @@ function Showcase() {
     <section className="bg_img pb-5 relative overflow-hidden">
       <div className="w-[90%] h-full m-auto relative z-10 flex items-center justify-center">
         {/* Container for centered slider */}
-        <div className="flex items-center justify-center gap-4 relative h-[500px]">
+        <div className="flex items-center justify-center gap-4 relative h-[300px] md:h-[400px] lg:h-[500px]">
           {movies.map((movie, index) => {
             const isActive = index === currentIndex;
 
@@ -31,19 +31,37 @@ function Showcase() {
                 key={movie.id}
                 className={`absolute transition-all duration-500 cursor-pointer ${
                   isActive
-                    ? "w-[300px] h-[400px] z-30 left-1/2 transform -translate-x-1/2"
-                    : "w-[250px] h-[350px] z-20"
+                    ? "w-[200px] h-[300px] md:w-[250px] md:h-[350px] lg:w-[300px] lg:h-[400px] z-30 left-1/2 transform -translate-x-1/2"
+                    : "w-[150px] h-[225px] md:w-[200px] md:h-[300px] lg:w-[250px] lg:h-[350px] z-20"
                 }`}
                 style={{
                   left:
                     index === (currentIndex + 1) % movies.length
-                      ? "calc(50% + 180px)"
+                      ? "calc(50% + 120px)"
                       : index ===
                         (currentIndex - 1 + movies.length) % movies.length
-                      ? "calc(50% - 180px - 250px)"
+                      ? "calc(50% - 120px - 150px)"
                       : isActive
                       ? "50%"
                       : "auto",
+                  "@media (min-width: 768px)": {
+                    left:
+                      index === (currentIndex + 1) % movies.length
+                        ? "calc(50% + 150px)"
+                        : index ===
+                          (currentIndex - 1 + movies.length) % movies.length
+                        ? "calc(50% - 150px - 200px)"
+                        : "50%",
+                  },
+                  "@media (min-width: 1024px)": {
+                    left:
+                      index === (currentIndex + 1) % movies.length
+                        ? "calc(50% + 180px)"
+                        : index ===
+                          (currentIndex - 1 + movies.length) % movies.length
+                        ? "calc(50% - 180px - 250px)"
+                        : "50%",
+                  },
                 }}
                 onClick={() => setCurrentIndex(index)}
               >
@@ -65,22 +83,22 @@ function Showcase() {
           })}
         </div>
 
-        {/* Navigation buttons and indicators... */}
-        <div className="absolute bottom-10 left-0 flex items-center gap-5">
-          <button className="h-[40px] w-[160px] text-[17px] rounded-[40px] bg-blue-600 hover:bg-blue-700 text-white transition-colors duration-600">
+        {/* Navigation buttons and indicators */}
+        <div className="absolute bottom-5 md:bottom-10 left-1/2 transform -translate-x-1/2 flex items-center gap-3 md:gap-5">
+          <button className="h-[30px] w-[120px] md:h-[40px] md:w-[160px] text-[14px] md:text-[17px] rounded-[40px] bg-blue-600 hover:bg-blue-700 text-white transition-colors duration-600">
             Watch Movie
           </button>
-          <button className="border border-blue-500 h-[40px] w-[160px] text-white text-[17px] rounded-[40px] flex items-center justify-center gap-2 hover:bg-blue-500/20 transition-all duration-600">
-            More Info <ArrowRight size={20} color="#fff" />
+          <button className="border border-blue-500 h-[30px] w-[120px] md:h-[40px] md:w-[160px] text-white text-[14px] md:text-[17px] rounded-[40px] flex items-center justify-center gap-2 hover:bg-blue-500/20 transition-all duration-600">
+            More Info <ArrowRight size={16} md:size={20} color="#fff" />
           </button>
         </div>
 
-        <div className="absolute bottom-32 left-1/2 transform -translate-x-1/2 flex gap-2">
+        <div className="absolute bottom-16 md:bottom-32 left-1/2 transform -translate-x-1/2 flex gap-2">
           {movies.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-600 ${
+              className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-600 ${
                 index === currentIndex
                   ? "bg-blue-500 scale-125"
                   : "bg-white/30 hover:bg-white/50"
