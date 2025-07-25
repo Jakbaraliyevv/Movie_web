@@ -7,7 +7,7 @@ function Home() {
     <div>
       <Navbar />
       <Showcase />
-      {/* <Ternds /> */}
+      <Ternds />
     </div>
   );
 }
